@@ -1,0 +1,48 @@
+import React, { useState } from 'react';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+
+export default function LocationsScreen() {
+  const [locations, setLocations] = useState([
+    { id: '1', name: 'Current Location' },
+    { id: '2', name: 'Dublin' },
+  ]);
+
+  const addLocation = () => {
+    // Implement adding a new location
+  };
+
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={locations}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <TouchableOpacity style={styles.item}>
+            <Text>{item.name}</Text>
+          </TouchableOpacity>
+        )}
+      />
+      <TouchableOpacity style={styles.addButton} onPress={addLocation}>
+        <Text>Add Location</Text>
+      </TouchableOpacity>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+  item: {
+    padding: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: '#ccc',
+  },
+  addButton: {
+    marginTop: 20,
+    padding: 10,
+    backgroundColor: '#0288d1',
+    alignItems: 'center',
+  },
+});
